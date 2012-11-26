@@ -1,6 +1,9 @@
 public class poisson {
 
-    /** This is based off Donald Knuth's algorithm for generating random Poisson number */
+    /** This function is based on Donald Knuth's algorithm for generating random Poisson number
+     *  @param lambda - the mean of the Poisson random variable   
+     */
+    
     public static int poissonRandomNumber(double lambda) {
         double L = Math.exp(-lambda);
         int k = 0;
@@ -21,24 +24,39 @@ public class poisson {
      *  @param numTimes - the number of times you want to run the simulation. The higher numTimes is, the more accurate the result will be
      */
     
-    public static double calculatePoisson(double lambda, double lowerThreshold, int numTimes) {
+    public static double calculatePoisson(double lambda, double lowerThreshold, int numTimesOneRun) {
         int random, total = 0;
-        for (int k = 0; k < numTimes; k++) {
+        for (int k = 0; k < numTimesOneRun; k++) {
             random = poissonRandomNumber(lambda);
             if (random >= lowerThreshold)
                 total += 1;
         }
-        return (double) total / numTimes;
+        return (double) total / numTimesOneRun;
+    }
+
+    /**
+     * Calculate the upper bound after running numRunUpperBound times
+     */
+    public static double calculateUpperBound(double lambda, double lowerThreshold, int numTimesOneRun, int numRunUpperBound) {
+        double result;
+        double upperBound = 0;
+        for (int k = 0; k < numRunUpperBound; k++) {
+            result = calculatePoisson(lambda, lowerThreshold, numTimesOneRun);
+            if (result > upperBound)
+                upperBound = result;
+        }
+        return upperBound;
     }
 
     public static void main(String [] args) {
         /* I don't use Scanner for input because it takes too much time to simulate a run when you have to enter those values each time. */
-        /* EDIT YOUR LAMBDA, UPPER_BOUND, AND NUMBER OF RUNS HERE */
+        /* EDIT YOUR LAMBDA, THRESHOLD, NUMBER OF CALCULATION FOR EACH RUN, AND NUMBER OF RUNS HERE */
         double lambda = 20;
         double lowerThreshold = 26;
-        int numTimes = 1000;
+        int numTimesOneRun = 1000;
+        int numRunUpperBound = 100;
         
-        System.out.print("Simulate Poisson Random Process with lambda = " + lambda + " and lower threshold = " + lowerThreshold + " in " + numTimes + " runs: ");
-        System.out.println(calculatePoisson(20, 26, 1000));
+        System.out.println("Simulate Poisson Random Process with lambda = " + lambda + " and lower threshold = " + lowerThreshold + " in " + numTimesOneRun + " run");
+        System.out.println("The upper bound after " + numRunUpperBound + " times is: " + calculateUpperBound(lambda, lowerThreshold, numTimesOneRun, numRunUpperBound));
     }
 }
