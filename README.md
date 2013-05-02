@@ -3,13 +3,8 @@ Probability Programs
 
 ### A small collection of all the probability programs I wrote during my probability class at Cal
 
-To run a Java program on a Mac or a Unix/Linux machine, you must have Java (either JDE or JRE will do) installed. On the terminal, type (for example, the Poisson program)
-   
-    javac poisson.java
-    java poisson
+Updated with Python3's version :) 
 
-To run a Python program (Python 2.7 will work BEST), for example, on the terminal, type
-    
-    python sampleDistribution.py
+If you have trouble installing matplotlib for Python3, [here's a good place to start](http://joat-programmer.blogspot.com/2012/08/installing-matplotlib-on-python3.html). What I did was, install [distribute](https://pypi.python.org/pypi/distribute) first, then [pip for Py3K](https://pypi.python.org/pypi/pip), then numpy, and then other matplotlib's dependencies (as seen in the link above). Finally, clone [matplotlib](https://github.com/matplotlib/matplotlib) to your local directory, and compile from sources. 
 
-I don't think it will work for Python3 yet since Matplotlib hasn't been officially supported on Python3, but stay tuned!
+If there are multiple versions of pip, don't forget to specify **pip-3.2** (or 3.3).
