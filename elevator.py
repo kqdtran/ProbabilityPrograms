@@ -2,8 +2,11 @@
 Calculate the expected the number of floors that 10 independent people would want to stop in a 10-floor building, assuming all 10 enter the elevator on the ground floor and no one else enters the elevator at any other floor. 
 """
 
+import matplotlib
 import random
-from matplotlib import pylab as plt
+
+matplotlib.use("TkAgg")
+import matplotlib.pyplot as plt
 
 def elevator():
     n = 10000

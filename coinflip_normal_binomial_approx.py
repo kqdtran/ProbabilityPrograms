@@ -1,9 +1,13 @@
 """
-In this problem, we want to test if the probability of getting at least 5064 heads out of 10000 flips of a fair coin is approximately 0.10 by the normal approximation to a binomial random variable
+In this problem, we want to test if the probability of getting at least 5064 heads out of 10000 
+flips of a fair coin is approximately 0.10 by the normal approximation to a binomial random variable
 """
 
+import matplotlib
 import random
-from matplotlib import pylab as plt
+
+matplotlib.use("TkAgg")
+import matplotlib.pyplot as plt
 
 def flip():
     n = 10000
